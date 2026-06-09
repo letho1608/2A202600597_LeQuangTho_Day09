@@ -16,7 +16,7 @@ Thư mục này chứa các bài tập thực hành cho codelab A2A Multi-Agent.
 
 **Chạy:**
 ```bash
-uv run python exercises/exercise_2_tools.py
+python exercises/exercise_2_tools.py
 ```
 
 ---
@@ -34,7 +34,7 @@ uv run python exercises/exercise_2_tools.py
 
 **Chạy:**
 ```bash
-uv run python exercises/exercise_4_multiagent.py
+python exercises/exercise_4_multiagent.py
 ```
 
 ---
@@ -100,7 +100,7 @@ A: Check xem đã thêm vào `tools` list và `.bind_tools()` chưa.
 A: Đảm bảo dùng `Send()` API và các agents không phụ thuộc lẫn nhau.
 
 **Q: Import error?**  
-A: Chạy `uv sync` để cài đặt dependencies.
+A: Chạy `pip install -e .` để cài đặt dependencies.
 
 ---
 

@@ -62,7 +62,7 @@ def _get_nvidia(model: str) -> BaseChatModel:
     except ImportError:
         logger.error(
             "langchain-nvidia-ai-endpoints not installed. "
-            "Run: uv add langchain-nvidia-ai-endpoints"
+            "Run: pip install langchain-nvidia-ai-endpoints"
         )
         raise
 
@@ -79,7 +79,7 @@ def _get_ollama(model: str) -> BaseChatModel:
     except ImportError:
         logger.error(
             "langchain-ollama not installed. "
-            "Run: uv add langchain-ollama"
+            "Run: pip install langchain-ollama"
         )
         raise
 

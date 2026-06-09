@@ -32,14 +32,14 @@ AGENT_ENDPOINT = f"http://localhost:{PORT}"
 REGISTRY_URL = os.getenv("REGISTRY_URL", "http://localhost:10000")
 
 
-async def _register_with_retry(max_attempts: int = 10, delay: float = 2.0) -> None:
+async def _register_with_retry(endpoint: str = AGENT_ENDPOINT, max_attempts: int = 10, delay: float = 2.0) -> None:
     """Retry registration until the registry is up."""
     info = {
         "agent_name": "tax-agent",
         "version": "1.0",
         "description": "Specialist tax attorney and CPA agent for tax law questions",
         "tasks": ["tax_question"],
-        "endpoint": AGENT_ENDPOINT,
+        "endpoint": endpoint,
         "tags": ["tax", "irs", "tax-evasion", "penalties"],
     }
     for attempt in range(1, max_attempts + 1):
@@ -56,13 +56,14 @@ async def _register_with_retry(max_attempts: int = 10, delay: float = 2.0) -> No
     logger.error("Failed to register after %d attempts", max_attempts)
 
 
-async def main() -> None:
-    await _register_with_retry()
+async def serve(port: int = PORT) -> None:
+    agent_endpoint = f"http://localhost:{port}"
+    await _register_with_retry(endpoint=agent_endpoint)
 
     agent_card = AgentCard(
         name="Tax Agent",
         description="Specialist tax attorney and CPA for tax law and compliance questions",
-        url=AGENT_ENDPOINT,
+        url=agent_endpoint,
         version="1.0.0",
         capabilities=AgentCapabilities(streaming=False),
         default_input_modes=["text/plain"],
@@ -92,11 +93,11 @@ async def main() -> None:
     )
     app = app_builder.build()
 
-    config = uvicorn.Config(app, host="0.0.0.0", port=PORT, log_level="info")
+    config = uvicorn.Config(app, host="0.0.0.0", port=port, log_level="info")
     server = uvicorn.Server(config)
-    logger.info("Tax Agent listening on port %d", PORT)
+    logger.info("Tax Agent listening on port %d", port)
     await server.serve()
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(serve())

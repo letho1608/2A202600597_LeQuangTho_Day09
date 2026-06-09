@@ -5,7 +5,7 @@
 ### Setup
 ```bash
 # Cài đặt dependencies
-uv sync
+pip install -e .
 
 # Copy environment file
 cp .env.example .env
@@ -15,16 +15,16 @@ cp .env.example .env
 ### Chạy Stages (Standalone)
 ```bash
 # Stage 1: Direct LLM
-uv run python stages/stage_1_direct_llm/main.py
+python stages/stage_1_direct_llm/main.py
 
 # Stage 2: RAG + Tools
-uv run python stages/stage_2_rag_tools/main.py
+python stages/stage_2_rag_tools/main.py
 
 # Stage 3: ReAct Agent
-uv run python stages/stage_3_single_agent/main.py
+python stages/stage_3_single_agent/main.py
 
 # Stage 4: Multi-Agent (in-process)
-uv run python stages/stage_4_milti_agent/main.py
+python stages/stage_4_milti_agent/main.py
 ```
 
 ### Chạy Stage 5 (Distributed)
@@ -33,7 +33,7 @@ uv run python stages/stage_4_milti_agent/main.py
 ./start_all.sh
 
 # Test hệ thống (terminal khác)
-uv run python test_client.py
+python test_client.py
 
 # Stop tất cả
 # Ctrl+C trong terminal chạy start_all.sh
@@ -50,22 +50,22 @@ python -m demo_web
 ### Chạy Từng Service Riêng
 ```bash
 # Registry
-uv run python -m registry
+python -m registry
 
 # Customer Agent
-uv run python -m customer_agent
+python -m customer_agent
 
 # Law Agent
-uv run python -m law_agent
+python -m law_agent
 
 # Tax Agent
-uv run python -m tax_agent
+python -m tax_agent
 
 # Compliance Agent
-uv run python -m compliance_agent
+python -m compliance_agent
 
 # Web Demo UI
-uv run python -m demo_web
+python -m demo_web
 ```
 
 ---
@@ -199,7 +199,7 @@ grep "trace_id" <log_output>
 - Key phải bắt đầu bằng `sk-or-v1-...`
 
 **"Module not found"**
-- Chưa cài dependencies: `uv sync`
+- Chưa cài dependencies: `pip install -e .`
 - Sai Python version: cần 3.10+
 
 **"Timeout"**

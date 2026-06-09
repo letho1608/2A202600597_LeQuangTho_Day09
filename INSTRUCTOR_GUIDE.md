@@ -15,13 +15,12 @@ Gửi email cho sinh viên:
 ```
 Các bạn cần cài đặt trước:
 1. Python 3.10+ (kiểm tra: python --version)
-2. uv package manager: curl -LsSf https://astral.sh/uv/install.sh | sh
-3. Tạo tài khoản OpenRouter: https://openrouter.ai
-4. Clone repo: git clone <repo-url>
-5. Chạy: cd legal_multiagent && uv sync
-6. Copy .env.example thành .env và thêm OPENROUTER_API_KEY
+2. Tạo tài khoản OpenRouter: https://openrouter.ai
+3. Clone repo: git clone <repo-url>
+4. Chạy: cd legal_multiagent && pip install -e .
+5. Copy .env.example thành .env và thêm OPENROUTER_API_KEY
 
-Test: uv run python stages/stage_1_direct_llm/main.py
+Test: python stages/stage_1_direct_llm/main.py
 Nếu chạy được là OK!
 ```
 
@@ -77,7 +76,7 @@ Nếu chạy được là OK!
 
 **Demo:**
 ```bash
-uv run python stages/stage_1_direct_llm/main.py
+python stages/stage_1_direct_llm/main.py
 ```
 
 **Hướng dẫn sinh viên:**
@@ -97,7 +96,7 @@ uv run python stages/stage_1_direct_llm/main.py
 
 **Demo:**
 ```bash
-uv run python stages/stage_2_rag_tools/main.py
+python stages/stage_2_rag_tools/main.py
 ```
 
 Chỉ ra:
@@ -125,7 +124,7 @@ Chỉ ra:
 
 **Demo:**
 ```bash
-uv run python stages/stage_3_single_agent/main.py
+python stages/stage_3_single_agent/main.py
 ```
 
 So sánh với Stage 2:
@@ -146,7 +145,7 @@ So sánh với Stage 2:
 
 **Demo:**
 ```bash
-uv run python stages/stage_4_milti_agent/main.py
+python stages/stage_4_milti_agent/main.py
 ```
 
 Vẽ trên bảng:
@@ -218,7 +217,7 @@ Vẽ trên bảng:
 
 2. **Test:**
    ```bash
-   uv run python test_client.py
+   python test_client.py
    ```
 
 3. **Show logs:**
@@ -242,7 +241,7 @@ Vẽ trên bảng:
 3. **Modify agent (5 phút):**
    - Mở `tax_agent/graph.py`
    - Sửa system prompt (ví dụ: thêm "Trả lời ngắn gọn trong 2 câu")
-   - Restart tax agent: `uv run python -m tax_agent`
+   - Restart tax agent: `python -m tax_agent`
    - Test lại
 
 ---
@@ -347,7 +346,7 @@ kill -9 <PID>
 ```bash
 # Reinstall
 rm -rf .venv
-uv sync
+pip install -e .
 ```
 
 **4. LLM response chậm:**

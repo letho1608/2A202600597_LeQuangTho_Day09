@@ -67,7 +67,7 @@ User question
 | LLM provider | OpenRouter / NVIDIA / Ollama / Groq (configurable via `.env`) |
 | A2A transport | [a2a-sdk](https://pypi.org/project/a2a-sdk/) |
 | Registry | FastAPI + in-memory store |
-| Package manager | [uv](https://docs.astral.sh/uv/) |
+| Package manager | pip |
 
 ## 📚 Codelab for Students
 
@@ -106,7 +106,7 @@ Tổng kết & Q&A (15 phút)
 ### Prerequisites
 
 - Python 3.10+
-- [uv](https://docs.astral.sh/uv/) package manager (or pip)
+- pip
 - API key cho provider bạn chọn (OpenRouter / NVIDIA / Groq) hoặc [Ollama](https://ollama.com) local
 
 ### Setup
@@ -115,7 +115,7 @@ Tổng kết & Q&A (15 phút)
 # Clone and install
 git clone <repo-url>
 cd legal_multiagent
-uv sync
+pip install -e .
 
 # Configure environment
 cp .env.example .env
@@ -132,14 +132,14 @@ cp .env.example .env
 .\start_all.ps1
 
 # In another terminal, send a test question
-uv run python test_client.py
+python test_client.py
 ```
 
 ### Run Web Demo UI
 
 ```bash
 # Start the web interface (requires Stage 5 services running, or use Stage 4 local mode)
-uv run python -m demo_web
+python -m demo_web
 
 # Or double-click run.bat (Windows)
 # Open http://localhost:8080
@@ -150,10 +150,10 @@ uv run python -m demo_web
 No servers needed — each demo runs as a standalone script:
 
 ```bash
-uv run python stages/stage_1_direct_llm/main.py
-uv run python stages/stage_2_rag_tools/main.py
-uv run python stages/stage_3_single_agent/main.py
-uv run python stages/stage_4_multi_agent/main.py
+python stages/stage_1_direct_llm/main.py
+python stages/stage_2_rag_tools/main.py
+python stages/stage_3_single_agent/main.py
+python stages/stage_4_multi_agent/main.py
 ```
 
 ## LLM Evolution Stages
@@ -178,7 +178,7 @@ legal_multiagent/
 ├── start_all.ps1              # Launches all services (Windows)
 ├── run.bat                    # Start web demo UI (Windows)
 ├── test_client.py             # E2E test client
-├── pyproject.toml             # Dependencies (uv-managed)
+├── pyproject.toml             # Dependencies
 ├── .env.example               # Required environment variables
 │
 ├── common/                    # Shared utilities

@@ -29,14 +29,14 @@ PORT = 10101
 AGENT_ENDPOINT = f"http://localhost:{PORT}"
 
 
-async def _register_with_retry(max_attempts: int = 10, delay: float = 2.0) -> None:
+async def _register_with_retry(endpoint: str = AGENT_ENDPOINT, max_attempts: int = 10, delay: float = 2.0) -> None:
     """Retry registration until the registry is up."""
     info = {
         "agent_name": "law-agent",
         "version": "1.0",
         "description": "Legal orchestrator: contract law, delegating to tax and compliance agents",
         "tasks": ["legal_question"],
-        "endpoint": AGENT_ENDPOINT,
+        "endpoint": endpoint,
         "tags": ["legal", "contract", "law", "orchestrator"],
     }
     for attempt in range(1, max_attempts + 1):
@@ -53,8 +53,9 @@ async def _register_with_retry(max_attempts: int = 10, delay: float = 2.0) -> No
     logger.error("Failed to register after %d attempts", max_attempts)
 
 
-async def main() -> None:
-    await _register_with_retry()
+async def serve(port: int = PORT) -> None:
+    agent_endpoint = f"http://localhost:{port}"
+    await _register_with_retry(endpoint=agent_endpoint)
 
     agent_card = AgentCard(
         name="Law Agent",
@@ -62,7 +63,7 @@ async def main() -> None:
             "Senior corporate litigation attorney. Analyses legal questions and "
             "orchestrates parallel tax and compliance sub-agent calls."
         ),
-        url=AGENT_ENDPOINT,
+        url=agent_endpoint,
         version="1.0.0",
         capabilities=AgentCapabilities(streaming=False),
         default_input_modes=["text/plain"],
@@ -92,11 +93,11 @@ async def main() -> None:
     )
     app = app_builder.build()
 
-    config = uvicorn.Config(app, host="0.0.0.0", port=PORT, log_level="info")
+    config = uvicorn.Config(app, host="0.0.0.0", port=port, log_level="info")
     server = uvicorn.Server(config)
-    logger.info("Law Agent listening on port %d", PORT)
+    logger.info("Law Agent listening on port %d", port)
     await server.serve()
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(serve())

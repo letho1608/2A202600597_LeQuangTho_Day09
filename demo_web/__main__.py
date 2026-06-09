@@ -211,6 +211,12 @@ def _part_text(part: object) -> str:
     return getattr(inner, "text", "") or ""
 
 
+async def serve(port: int = 8080) -> None:
+    config = uvicorn.Config(app, host="0.0.0.0", port=port, log_level="info")
+    server = uvicorn.Server(config)
+    await server.serve()
+
+
 if __name__ == "__main__":
     logger.info("Starting Demo Web Server on port 8080")
-    uvicorn.run(app, host="0.0.0.0", port=8080, log_level="info")
+    asyncio.run(serve())

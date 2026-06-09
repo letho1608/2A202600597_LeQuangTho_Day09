@@ -11,6 +11,7 @@ Endpoints:
 
 from __future__ import annotations
 
+import asyncio
 import logging
 from datetime import datetime, timezone
 from typing import Any
@@ -83,6 +84,12 @@ async def health() -> dict:
     return {"status": "ok", "agent_count": len(agents)}
 
 
+async def serve(port: int = 10000) -> None:
+    config = uvicorn.Config(app, host="0.0.0.0", port=port, log_level="info")
+    server = uvicorn.Server(config)
+    await server.serve()
+
+
 if __name__ == "__main__":
     logger.info("Starting Registry on port 10000")
-    uvicorn.run(app, host="0.0.0.0", port=10000, log_level="info")
+    asyncio.run(serve())

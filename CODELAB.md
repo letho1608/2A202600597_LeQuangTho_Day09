@@ -17,7 +17,7 @@ Sau khi hoàn thành codelab này, bạn sẽ:
 
 ### Yêu Cầu Hệ Thống
 - Python 3.10 trở lên
-- [uv](https://docs.astral.sh/uv/) package manager (hoặc pip)
+- pip
 - API key cho provider bạn chọn (OpenRouter / NVIDIA / Groq) hoặc [Ollama](https://ollama.com) local
 
 ### Cài Đặt
@@ -28,7 +28,7 @@ git clone <repo-url>
 cd legal_multiagent
 
 # Cài đặt dependencies
-uv sync
+pip install -e .
 
 # Cấu hình environment
 cp .env.example .env
@@ -57,7 +57,7 @@ LLM (Large Language Model) ở dạng cơ bản nhất là một API nhận inpu
 **Bước 1:** Chạy demo Stage 1
 
 ```bash
-uv run python stages/stage_1_direct_llm/main.py
+python stages/stage_1_direct_llm/main.py
 ```
 
 **Bước 2:** Đọc và hiểu code
@@ -97,7 +97,7 @@ Thêm parameter `temperature=0.3` vào hàm `get_llm()` trong `common/llm.py` đ
 **Bước 1:** Chạy demo Stage 2
 
 ```bash
-uv run python stages/stage_2_rag_tools/main.py
+python stages/stage_2_rag_tools/main.py
 ```
 
 **Bước 2:** Phân tích code
@@ -168,7 +168,7 @@ LangGraph cung cấp `create_react_agent` để tự động hóa pattern này.
 **Bước 1:** Chạy demo Stage 3
 
 ```bash
-uv run python stages/stage_3_single_agent/main.py
+python stages/stage_3_single_agent/main.py
 ```
 
 **Bước 2:** Quan sát output
@@ -238,7 +238,7 @@ Thêm `verbose=True` vào `create_react_agent()` để xem chi tiết quá trìn
 **Bước 1:** Chạy demo Stage 4
 
 ```bash
-uv run python stages/stage_4_milti_agent/main.py
+python stages/stage_4_milti_agent/main.py
 ```
 
 **Bước 2:** Phân tích kiến trúc
@@ -340,7 +340,7 @@ Chờ ~10 giây để tất cả services khởi động.
 **Bước 2:** Test hệ thống
 
 ```bash
-uv run python test_client.py
+python test_client.py
 ```
 
 **Bước 3:** Quan sát logs
