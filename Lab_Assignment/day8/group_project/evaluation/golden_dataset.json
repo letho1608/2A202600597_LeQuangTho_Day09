@@ -1,0 +1,77 @@
+[
+  {
+    "input": "Phạm vi điều chỉnh của Luật Phòng chống ma túy 2021 là gì?",
+    "actual_output": "Luật này quy định về phòng, chống ma túy; quản lý người sử dụng trái phép chất ma túy; cai nghiện ma túy; trách nhiệm của cá nhân, gia đình, cơ quan, tổ chức trong phòng, chống ma túy; quản lý nhà nước và hợp tác quốc tế về phòng, chống ma túy.",
+    "expected_output": "Luật này quy định về phòng, chống ma túy; quản lý người sử dụng trái phép chất ma túy; cai nghiện ma túy; trách nhiệm của cá nhân, gia đình, cơ quan, tổ chức trong phòng, chống ma túy; quản lý nhà nước và hợp tác quốc tế về phòng, chống ma túy."
+  },
+  {
+    "input": "Chất ma túy là gì theo Luật năm 2021?",
+    "actual_output": "Chất ma túy là chất gây nghiện, chất hướng thần được quy định trong danh mục chất ma túy do Chính phủ ban hành.",
+    "expected_output": "Chất ma túy là chất gây nghiện, chất hướng thần được quy định trong danh mục chất ma túy do Chính phủ ban hành."
+  },
+  {
+    "input": "Tiền chất là gì?",
+    "actual_output": "Tiền chất là hóa chất không thể thiếu được trong quá trình điều chế, sản xuất chất ma túy được quy định trong danh mục tiền chất do Chính phủ ban hành.",
+    "expected_output": "Tiền chất là hóa chất không thể thiếu được trong quá trình điều chế, sản xuất chất ma túy được quy định trong danh mục tiền chất do Chính phủ ban hành."
+  },
+  {
+    "input": "Hình phạt cho tội sản xuất trái phép chất ma túy ở khung cơ bản là bao nhiêu năm tù?",
+    "actual_output": "Người nào sản xuất trái phép chất ma túy dưới bất kỳ hình thức nào, thì bị phạt tù từ 02 năm đến 07 năm.",
+    "expected_output": "Người nào sản xuất trái phép chất ma túy dưới bất kỳ hình thức nào, thì bị phạt tù từ 02 năm đến 07 năm."
+  },
+  {
+    "input": "Phạm tội sản xuất trái phép chất ma túy có tổ chức thì bị phạt tù bao lâu?",
+    "actual_output": "Phạm tội thuộc trường hợp có tổ chức thì bị phạt tù từ 07 năm đến 15 năm.",
+    "expected_output": "Phạm tội thuộc trường hợp có tổ chức thì bị phạt tù từ 07 năm đến 15 năm."
+  },
+  {
+    "input": "Tội tàng trữ trái phép chất ma túy mà không nhằm mục đích mua bán bị phạt như thế nào ở khung cơ bản?",
+    "actual_output": "Bị phạt tù từ 01 năm đến 05 năm.",
+    "expected_output": "Bị phạt tù từ 01 năm đến 05 năm."
+  },
+  {
+    "input": "Tàng trữ Heroine khối lượng từ 0,1 gam đến dưới 05 gam bị xử lý ra sao?",
+    "actual_output": "Tàng trữ Heroine có khối lượng từ 0,1 gam đến dưới 05 gam thì bị phạt tù từ 01 năm đến 05 năm.",
+    "expected_output": "Tàng trữ Heroine có khối lượng từ 0,1 gam đến dưới 05 gam thì bị phạt tù từ 01 năm đến 05 năm."
+  },
+  {
+    "input": "Nghị định 105/2021/NĐ-CP quy định chi tiết về các vấn đề gì?",
+    "actual_output": "Nghị định này quy định chi tiết và hướng dẫn thi hành một số điều của Luật Phòng, chống ma túy về kiểm soát các hoạt động hợp pháp liên quan đến ma túy vì mục đích quốc phòng, an ninh; quản lý người sử dụng trái phép chất ma túy; lập hồ sơ, chế độ đối với người cai nghiện ma túy; và hợp tác quốc tế về phòng, chống ma túy.",
+    "expected_output": "Nghị định này quy định chi tiết và hướng dẫn thi hành một số điều của Luật Phòng, chống ma túy về kiểm soát các hoạt động hợp pháp liên quan đến ma túy vì mục đích quốc phòng, an ninh; quản lý người sử dụng trái phép chất ma túy; lập hồ sơ, chế độ đối với người cai nghiện ma túy; và hợp tác quốc tế về phòng, chống ma túy."
+  },
+  {
+    "input": "Chi Dân bị truy tố về tội gì?",
+    "actual_output": "Ca sĩ Chi Dân bị truy tố về tội 'Tổ chức sử dụng trái phép chất ma túy'.",
+    "expected_output": "Ca sĩ Chi Dân bị truy tố về tội 'Tổ chức sử dụng trái phép chất ma túy'."
+  },
+  {
+    "input": "An Tây (Andrea Aybar) có kết quả xét nghiệm ma túy như thế nào?",
+    "actual_output": "An Tây (Andrea Aybar) có kết quả xét nghiệm dương tính với chất ma túy.",
+    "expected_output": "An Tây (Andrea Aybar) có kết quả xét nghiệm dương tính với chất ma túy."
+  },
+  {
+    "input": "Vụ án mạng của Chi Dân và An Tây nằm trong quá trình mở rộng điều tra chuyên án nào?",
+    "actual_output": "Nằm trong quá trình mở rộng điều tra chuyên án VN10 (vụ án 4 tiếp viên hàng không xách ma túy từ Pháp về Việt Nam qua đường hàng không).",
+    "expected_output": "Nằm trong quá trình mở rộng điều tra chuyên án VN10 (vụ án 4 tiếp viên hàng không xách ma túy từ Pháp về Việt Nam qua đường hàng không)."
+  },
+  {
+    "input": "Người nổi tiếng trên mạng xã hội Nguyễn Đỗ Trúc Phương bị khởi tố vì hành vi gì?",
+    "actual_output": "Bị khởi tố về hành vi 'Tổ chức sử dụng trái phép chất ma túy'.",
+    "expected_output": "Bị khởi tố về hành vi 'Tổ chức sử dụng trái phép chất ma túy'."
+  },
+  {
+    "input": "Công an TP.HCM (PC04) đã khởi tố tổng cộng bao nhiêu bị can trong vụ mở rộng điều tra đường dây từ Pháp?",
+    "actual_output": "Công an TP.HCM (PC04) đã khởi tố 1.183 bị can.",
+    "expected_output": "Công an TP.HCM (PC04) đã khởi tố 1.183 bị can."
+  },
+  {
+    "input": "Chính sách của cảnh sát đối với người nổi tiếng liên quan đến tội phạm ma túy là gì?",
+    "actual_output": "Cảnh sát nhấn mạnh chính sách 'không ngoại lệ' đối với người nổi tiếng liên quan đến tội phạm ma túy nhằm răn đe và làm sạch môi trường xã hội.",
+    "expected_output": "Cảnh sát nhấn mạnh chính sách 'không ngoại lệ' đối với người nổi tiếng liên quan đến tội phạm ma túy nhằm răn đe và làm sạch môi trường xã hội."
+  },
+  {
+    "input": "Chi Dân bị công an quận nào tạm giữ ban đầu?",
+    "actual_output": "Ca sĩ Chi Dân bị công an quận Tân Bình, TP.HCM tạm giữ.",
+    "expected_output": "Ca sĩ Chi Dân bị công an quận Tân Bình, TP.HCM tạm giữ."
+  }
+]

@@ -11,7 +11,7 @@ To enable full pipeline:
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parent / "data" / "standardized"
-DAY8_DIR = Path(__file__).parent.parent / "day8"
+DAY8_DIR = Path(__file__).parent / "day8"
 
 
 def load_documents(doc_type: str = "legal") -> list[dict]:
