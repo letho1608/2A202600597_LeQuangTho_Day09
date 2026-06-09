@@ -1,7 +1,7 @@
 [project]
 name = "legal-multiagent"
 version = "0.1.0"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 dependencies = [
     "a2a-sdk[http-server]>=0.3.0,<1.0",
     "langgraph>=0.4.1",
@@ -14,6 +14,10 @@ dependencies = [
     "pydantic>=2.11.0",
     "python-pptx>=1.0.2",
     "cairosvg>=2.9.0",
+    "langchain-nvidia-ai-endpoints>=1.0.0",
+    "langchain-ollama>=0.2.0",
+    "langchain-groq>=0.2.0",
+    "jinja2>=3.1.0",
 ]
 
 [build-system]
@@ -29,4 +33,5 @@ packages = [
     "tax_agent",
     "compliance_agent",
     "stages",
+    "demo_web",
 ]

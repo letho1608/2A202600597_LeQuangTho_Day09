@@ -1,7 +1,7 @@
 # Codelab: Xây Dựng Hệ Thống Multi-Agent với A2A Protocol
 
 **Thời gian:** 2 giờ  
-**Ngôn ngữ:** Python 3.11+  
+**Ngôn ngữ:** Python 3.10+  
 **Công nghệ:** LangGraph, LangChain, A2A SDK
 
 ## Mục Tiêu Học Tập
@@ -16,9 +16,9 @@ Sau khi hoàn thành codelab này, bạn sẽ:
 ## Chuẩn Bị
 
 ### Yêu Cầu Hệ Thống
-- Python 3.11 trở lên
-- [uv](https://docs.astral.sh/uv/) package manager
-- API key từ [OpenRouter](https://openrouter.ai)
+- Python 3.10 trở lên
+- [uv](https://docs.astral.sh/uv/) package manager (hoặc pip)
+- API key cho provider bạn chọn (OpenRouter / NVIDIA / Groq) hoặc [Ollama](https://ollama.com) local
 
 ### Cài Đặt
 
@@ -426,9 +426,34 @@ Nếu gặp vấn đề:
 
 ## **Bài Tập Cộng Điểm:**
 
-1. Vite Code HTML File Để demo các tương tác của các Agent ở stage 4 hoặc stage 5
-2. Sau khi chạy full Stage 5 (test_client.py) trả lời 2 câu hỏi:
-- Latency (Tổng thời gian trả lời 1 câu hỏi của hệ thống) là bao nhiêu giây?
-- Đề xuất phương án giảm latency và demo + show thời gian xử lý đã giảm được khi apply phương án?
+1. ✅ Web Demo UI (đã hoàn thành):
+   ```bash
+   # Start web demo tại http://localhost:8080
+   python -m demo_web
+   # Hoặc double-click run.bat (Windows)
+   ```
+   Xem trực quan pipeline agents: User → Customer → Law → [Tax + Compliance] → Kết quả
+
+2. Đo latency và đề xuất tối ưu:
+   ```bash
+   # Chạy benchmark so sánh các stage
+   python latency_benchmark.py
+
+   # Benchmark riêng từng stage
+   python latency_benchmark.py --mode stage1   # Direct LLM
+   python latency_benchmark.py --mode stage4   # In-process multi-agent
+   python latency_benchmark.py --mode stage5   # Distributed A2A
+   ```
+
+   **Gợi ý trả lời:**
+   - **Latency:** ~20-60s tùy model và provider
+   - **Nguyên nhân:** 3-5 LLM calls tuần tự, HTTP overhead, network latency
+   - **Phương án giảm latency:**
+     - Chọn model nhanh hơn (GPT-4o-mini, Llama 3.1 8B)
+     - Dùng Stage 4 (in-process) thay Stage 5 khi dev
+     - Cache kết quả cho câu hỏi trùng
+     - Streaming response để cải thiện perceived latency
+     - Dùng Ollama local nếu có GPU
+   - **Kết quả:** Kết hợp nhiều phương án có thể giảm từ 60s xuống dưới 10s
 
 **Chúc các bạn học tốt! 🚀**

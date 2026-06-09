@@ -9,7 +9,7 @@ uv sync
 
 # Copy environment file
 cp .env.example .env
-# Sau đó sửa .env, thêm OPENROUTER_API_KEY
+# Sau đó sửa .env, set LLM_PROVIDER và API key tương ứng
 ```
 
 ### Chạy Stages (Standalone)
@@ -39,6 +39,14 @@ uv run python test_client.py
 # Ctrl+C trong terminal chạy start_all.sh
 ```
 
+### Chạy Web Demo
+```bash
+# Start web UI (http://localhost:8080)
+python -m demo_web
+
+# Hoặc double-click run.bat (Windows)
+```
+
 ### Chạy Từng Service Riêng
 ```bash
 # Registry
@@ -55,6 +63,9 @@ uv run python -m tax_agent
 
 # Compliance Agent
 uv run python -m compliance_agent
+
+# Web Demo UI
+uv run python -m demo_web
 ```
 
 ---
@@ -180,7 +191,7 @@ grep "trace_id" <log_output>
 ### Common Errors
 
 **"Could not reach Customer Agent"**
-- Chưa start services: chạy `./start_all.sh`
+- Chưa start services: chạy `./start_all.sh` hoặc `.\start_all.ps1` (Windows)
 - Port bị chiếm: check với `lsof -i :10100`
 
 **"API key invalid"**
@@ -189,7 +200,7 @@ grep "trace_id" <log_output>
 
 **"Module not found"**
 - Chưa cài dependencies: `uv sync`
-- Sai Python version: cần 3.11+
+- Sai Python version: cần 3.10+
 
 **"Timeout"**
 - LLM response chậm là bình thường (30-60s)
@@ -282,6 +293,7 @@ Tax Agent    Compliance Agent
 | Law Agent | 10101 | http://localhost:10101 |
 | Tax Agent | 10102 | http://localhost:10102 |
 | Compliance Agent | 10103 | http://localhost:10103 |
+| Web Demo UI | 8080 | http://localhost:8080 |
 
 ### Agent Card Endpoints
 - Registry: http://localhost:10000/.well-known/agent.json

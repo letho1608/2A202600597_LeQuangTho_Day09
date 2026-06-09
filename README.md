@@ -64,7 +64,7 @@ User question
 | Layer | Choice |
 |---|---|
 | Agent framework | [LangGraph](https://langchain-ai.github.io/langgraph/) |
-| LLM provider | Any model via [OpenRouter](https://openrouter.ai) (OpenAI-compatible API) |
+| LLM provider | OpenRouter / NVIDIA / Ollama / Groq (configurable via `.env`) |
 | A2A transport | [a2a-sdk](https://pypi.org/project/a2a-sdk/) |
 | Registry | FastAPI + in-memory store |
 | Package manager | [uv](https://docs.astral.sh/uv/) |
@@ -105,9 +105,9 @@ Tổng kết & Q&A (15 phút)
 
 ### Prerequisites
 
-- Python 3.11+
-- [uv](https://docs.astral.sh/uv/) package manager
-- An [OpenRouter](https://openrouter.ai) API key
+- Python 3.10+
+- [uv](https://docs.astral.sh/uv/) package manager (or pip)
+- API key cho provider bạn chọn (OpenRouter / NVIDIA / Groq) hoặc [Ollama](https://ollama.com) local
 
 ### Setup
 
@@ -119,17 +119,30 @@ uv sync
 
 # Configure environment
 cp .env.example .env
-# Edit .env with your OpenRouter API key
+# Edit .env — set LLM_PROVIDER and your API key
 ```
 
 ### Run the Full System (Stage 5)
 
 ```bash
-# Start all 5 services (registry + 4 agents)
+# Linux/macOS
 ./start_all.sh
+
+# Windows PowerShell
+.\start_all.ps1
 
 # In another terminal, send a test question
 uv run python test_client.py
+```
+
+### Run Web Demo UI
+
+```bash
+# Start the web interface (requires Stage 5 services running, or use Stage 4 local mode)
+uv run python -m demo_web
+
+# Or double-click run.bat (Windows)
+# Open http://localhost:8080
 ```
 
 ### Run Individual Stage Demos
@@ -161,13 +174,15 @@ Each stage's folder includes an `architecture.svg` diagram and a self-contained 
 
 ```
 legal_multiagent/
-├── start_all.sh               # Launches all services in correct order
+├── start_all.sh               # Launches all services (Linux/macOS)
+├── start_all.ps1              # Launches all services (Windows)
+├── run.bat                    # Start web demo UI (Windows)
 ├── test_client.py             # E2E test client
 ├── pyproject.toml             # Dependencies (uv-managed)
 ├── .env.example               # Required environment variables
 │
 ├── common/                    # Shared utilities
-│   ├── llm.py                 # get_llm() → ChatOpenAI via OpenRouter
+│   ├── llm.py                 # get_llm() — supports OpenRouter/NVIDIA/Ollama/Groq
 │   ├── a2a_client.py          # delegate() — A2A message sending
 │   └── registry_client.py     # discover() / register() — Registry API
 │
@@ -176,6 +191,7 @@ legal_multiagent/
 ├── law_agent/                 # Legal orchestrator (port 10101)
 ├── tax_agent/                 # Tax specialist (port 10102)
 ├── compliance_agent/          # Compliance specialist (port 10103)
+├── demo_web/                  # Web demo UI (FastAPI + HTML)
 │
 ├── stages/                    # Progressive learning demos (1-4)
 │   ├── stage_1_direct_llm/
@@ -183,7 +199,8 @@ legal_multiagent/
 │   ├── stage_3_single_agent/
 │   └── stage_4_multi_agent/
 │
-└── docs/                      # Architecture diagrams (SVG)
+├── docs/                      # Architecture diagrams (SVG)
+└── exercises/                 # Bài tập thực hành + SOLUTIONS.md
 ```
 
 Each agent module follows the same structure:
@@ -195,11 +212,20 @@ Each agent module follows the same structure:
 
 | Environment Variable | Description | Default |
 |---|---|---|
-| `OPENROUTER_API_KEY` | Your OpenRouter API key | (required) |
-| `OPENROUTER_MODEL` | Model identifier | `anthropic/claude-sonnet-4-5` |
+| `LLM_PROVIDER` | LLM provider: `openrouter` / `nvidia` / `ollama` / `groq` | `openrouter` |
+| `LLM_MODEL` | Model identifier (overrides provider default) | *(provider-specific)* |
+| `OPENROUTER_API_KEY` | OpenRouter API key | — |
+| `OPENROUTER_MODEL` | OpenRouter model (fallback when LLM_MODEL unset) | `anthropic/claude-sonnet-4-5` |
+| `NVIDIA_API_KEY` | NVIDIA API key | — |
+| `GROQ_API_KEY` | Groq API key | — |
+| `OLLAMA_BASE_URL` | Ollama server URL | `http://localhost:11434` |
 | `REGISTRY_URL` | Registry service URL | `http://localhost:10000` |
 
-The model is swappable to any OpenRouter-supported model (e.g., `openai/gpt-4o`, `google/gemini-2.0-flash`).
+Provider defaults:
+- **openrouter**: `anthropic/claude-sonnet-4-5` (via OpenRouter)
+- **nvidia**: `meta/llama-3.1-70b-instruct` (via NVIDIA NIM)
+- **ollama**: `minimax-m3:cloud` (via local Ollama)
+- **groq**: `llama-3.3-70b-versatile` (via Groq API)
 
 ## Documentation Diagrams
 

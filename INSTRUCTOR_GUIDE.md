@@ -14,7 +14,7 @@ Gửi email cho sinh viên:
 
 ```
 Các bạn cần cài đặt trước:
-1. Python 3.11+ (kiểm tra: python --version)
+1. Python 3.10+ (kiểm tra: python --version)
 2. uv package manager: curl -LsSf https://astral.sh/uv/install.sh | sh
 3. Tạo tài khoản OpenRouter: https://openrouter.ai
 4. Clone repo: git clone <repo-url>
@@ -27,7 +27,7 @@ Nếu chạy được là OK!
 
 ### 2. Kiểm Tra Phòng Lab
 
-- [ ] Mỗi máy có Python 3.11+
+- [ ] Mỗi máy có Python 3.10+
 - [ ] Internet ổn định (cần gọi OpenRouter API)
 - [ ] Ports 10000-10103 không bị firewall chặn
 - [ ] Projector để demo
